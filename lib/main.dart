@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pokedex/configs/app_color.dart';
 import 'package:pokedex/screens/home/widgets/index.dart';
 
 Future<void> main() async {
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: AppColors.lighterGrey
       ),
       home: Home(),
       debugShowCheckedModeBanner: false,
