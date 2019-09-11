@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pokedex/configs/index.dart';
 import 'package:pokedex/widgets/homes/index.dart';
 
-class Home extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: ListView(
-          children: <Widget>[
-            _buildCards(),
-            _buildNews()
-          ],
-        ),
+    return ListView(
+      children: <Widget>[_buildCards(), _buildNews()],
     );
   }
 
@@ -59,7 +55,8 @@ class _HomeState extends State<Home> {
         shrinkWrap: true,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 0),
+            padding:
+                const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
