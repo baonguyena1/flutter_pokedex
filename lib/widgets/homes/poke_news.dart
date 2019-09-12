@@ -37,7 +37,6 @@ class PokeNews extends StatelessWidget {
                   time,
                   style: TextStyle(
                     fontSize: 10,
-                    color: AppColors.black.withOpacity(0.6),
                   ),
                 ),
               ],

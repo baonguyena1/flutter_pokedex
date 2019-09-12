@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/configs/index.dart';
+import 'package:pokedex/providers/config_provider.dart';
+import 'package:provider/provider.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar(
@@ -19,16 +21,21 @@ class SearchBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Icon(Icons.search),
+          Icon(
+            Icons.search,
+            color: Theme.of(context).disabledColor,
+          ),
           SizedBox(
             width: 16,
           ),
           Expanded(
-            child: TextFormField(
-              decoration: InputDecoration(
-                  hintText: 'Search Pokemon, Move, Ability etc',
-                  hintStyle: TextStyle(fontSize: 14, color: AppColors.grey),
-                  border: InputBorder.none),
+            child: Consumer<ConfigProvider>(
+              builder: (context, config, child) => TextFormField(
+                decoration: InputDecoration(
+                    hintText: 'Search Pokemon, Move, Ability etc',
+                    hintStyle: TextStyle(fontSize: 14),
+                    border: InputBorder.none),
+              ),
             ),
           )
         ],
