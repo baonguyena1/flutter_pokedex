@@ -29,12 +29,18 @@ class MyApp extends StatelessWidget {
                 primarySwatch: Colors.red,
                 primaryColor: config.darkModeOn ? Colors.black : Colors.white,
                 disabledColor: Colors.grey,
-                brightness:  config.darkModeOn ? Brightness.dark : Brightness.light,
-                buttonTheme: Theme.of(context)
-                    .buttonTheme
-                    .copyWith(colorScheme: config.darkModeOn ? ColorScheme.dark() : ColorScheme.light()),
+                brightness:
+                    config.darkModeOn ? Brightness.dark : Brightness.light,
+                buttonTheme: Theme.of(context).buttonTheme.copyWith(
+                    colorScheme: config.darkModeOn
+                        ? ColorScheme.dark()
+                        : ColorScheme.light()),
+                iconTheme: Theme.of(context).iconTheme.copyWith(
+                    color: config.darkModeOn ? Colors.black : Colors.white),
                 appBarTheme: AppBarTheme(elevation: 0),
-                scaffoldBackgroundColor: AppColors.lighterGrey),
+                scaffoldBackgroundColor: config.darkModeOn
+                    ? AppColors.darkerGrey
+                    : AppColors.lighterGrey),
             home: HomePage(),
             routes: {
               HomePage.routeName: (context) => HomePage(),
