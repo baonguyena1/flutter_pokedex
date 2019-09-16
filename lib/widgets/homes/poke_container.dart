@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/blocs/config_event_bloc.dart';
 import 'package:pokedex/locator.dart';
-import 'package:pokedex/providers/config_provider.dart';
 
 class PokeContainer extends StatelessWidget {
   const PokeContainer({@required this.children, this.decoration, Key key})

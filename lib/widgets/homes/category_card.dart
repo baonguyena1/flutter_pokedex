@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/blocs/config_event_bloc.dart';
 import 'package:pokedex/locator.dart';
-import 'package:pokedex/providers/config_provider.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard(

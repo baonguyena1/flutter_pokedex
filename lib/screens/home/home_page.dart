@@ -2,13 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pokedex/blocs/config_event_bloc.dart';
-import 'package:pokedex/configs/config_event.dart';
 import 'package:pokedex/locator.dart';
-import 'package:pokedex/providers/config_provider.dart';
 import 'package:pokedex/screens/home/index.dart';
 
 class HomePage extends StatelessWidget {
   static const String routeName = '/home';
+
   @override
   Widget build(BuildContext context) {
     final darkMode = getIt<ConfigEventBlocing>().darkMode;

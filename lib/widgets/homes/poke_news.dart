@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:pokedex/configs/index.dart';
 
 class PokeNews extends StatelessWidget {
   const PokeNews({

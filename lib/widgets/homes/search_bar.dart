@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/blocs/config_event_bloc.dart';
-import 'package:pokedex/locator.dart';
-import 'package:pokedex/providers/config_provider.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar(
@@ -11,8 +8,6 @@ class SearchBar extends StatelessWidget {
   final EdgeInsets margin;
   @override
   Widget build(BuildContext context) {
-    final darkMode = getIt<ConfigEventBlocing>().darkMode;
-
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       margin: const EdgeInsets.symmetric(horizontal: 16),
