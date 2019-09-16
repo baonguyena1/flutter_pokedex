@@ -1,16 +1,16 @@
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
-List<SingleChildCloneableWidget> providers = [
-  ...independentServices,
-  ...dependentServices,
-  ...uiConsumableProviders
-];
+// List<SingleChildCloneableWidget> providers = [
+//   ...independentServices,
+//   ...dependentServices,
+//   ...uiConsumableProviders
+// ];
 
-List<SingleChildCloneableWidget> independentServices = [
-];
+// List<SingleChildCloneableWidget> independentServices = [
+// ];
 
-List<SingleChildCloneableWidget> dependentServices = [
-];
-List<SingleChildCloneableWidget> uiConsumableProviders = [
+// List<SingleChildCloneableWidget> dependentServices = [
+// ];
+// List<SingleChildCloneableWidget> uiConsumableProviders = [
 
-];
+// ];

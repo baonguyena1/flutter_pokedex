@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pokedex/configs/app_color.dart';
 import 'package:pokedex/locator.dart';
-import 'package:pokedex/provider_setup.dart';
-import 'package:pokedex/providers/config_provider.dart';
 import 'package:pokedex/screens/home/index.dart';
-import 'package:provider/provider.dart';
+import 'blocs/config_event_bloc.dart';
 
 Future<void> main() async {
   await SystemChrome.setPreferredOrientations(
@@ -18,27 +16,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: providers,
-      child: ChangeNotifierProvider<ConfigProvider>(
-        builder: (context) => getIt.get<ConfigProvider>(),
-        child: Consumer<ConfigProvider>(
-          builder: (context, config, child) => MaterialApp(
+    final darkMode = getIt<ConfigEventBlocing>().darkMode;
+    return StreamBuilder(
+      stream: darkMode,
+      initialData: darkMode.value,
+      builder: (BuildContext context, AsyncSnapshot<bool> snapshot){
+        return Container(
+          child: MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(
                 primarySwatch: Colors.red,
-                primaryColor: config.darkModeOn ? Colors.black : Colors.white,
+                primaryColor: snapshot.data ? Colors.black : Colors.white,
                 disabledColor: Colors.grey,
                 brightness:
-                    config.darkModeOn ? Brightness.dark : Brightness.light,
+                    snapshot.data ? Brightness.dark : Brightness.light,
                 buttonTheme: Theme.of(context).buttonTheme.copyWith(
-                    colorScheme: config.darkModeOn
+                    colorScheme: snapshot.data
                         ? ColorScheme.dark()
                         : ColorScheme.light()),
                 iconTheme: Theme.of(context).iconTheme.copyWith(
-                    color: config.darkModeOn ? Colors.black : Colors.white),
+                    color: snapshot.data ? Colors.black : Colors.white),
                 appBarTheme: AppBarTheme(elevation: 0),
-                scaffoldBackgroundColor: config.darkModeOn
+                scaffoldBackgroundColor: snapshot.data
                     ? AppColors.darkerGrey
                     : AppColors.lighterGrey),
             home: HomePage(),
@@ -47,8 +46,8 @@ class MyApp extends StatelessWidget {
             },
             debugShowCheckedModeBanner: false,
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

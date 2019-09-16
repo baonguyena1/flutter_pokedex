@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/blocs/config_event_bloc.dart';
+import 'package:pokedex/locator.dart';
 import 'package:pokedex/providers/config_provider.dart';
-import 'package:provider/provider.dart';
 
 class PokeContainer extends StatelessWidget {
   const PokeContainer({@required this.children, this.decoration, Key key})
@@ -13,6 +14,7 @@ class PokeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final boxWidth = screenSize.width;
+    final darkMode = getIt<ConfigEventBlocing>().darkMode;
 
     return Container(
       decoration: decoration,
@@ -21,14 +23,20 @@ class PokeContainer extends StatelessWidget {
           Positioned(
             top: -boxWidth * 0.154,
             right: -boxWidth * 0.23,
-            child: Consumer<ConfigProvider>(
-              builder: (context, config, child) => Image.asset(
+            child: StreamBuilder(
+              stream: darkMode ,
+              initialData: darkMode.value ,
+              builder: (BuildContext context, AsyncSnapshot<bool> snapshot){
+                return Container(
+                  child: Image.asset(
                 'assets/images/pokeball.png',
                 width: boxWidth * 0.8,
                 scale: 1,
-                color: Color(config.darkModeOn ? 0xFFFFFFFF : 0xFF303943)
-                    .withOpacity(config.darkModeOn ? 0.2 : 0.05),
+                color: Color(snapshot.data ? 0xFFFFFFFF : 0xFF303943)
+                    .withOpacity(snapshot.data ? 0.2 : 0.05),
               ),
+                );
+              },
             ),
           ),
           Column(
